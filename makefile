@@ -62,7 +62,7 @@ ROOT_LIBFLAGS := $(shell root-config --cflags)
 UTIL_O_FILES    := $(patsubst %.$(SRC_SUFFIX),.build/%.o,$(wildcard util/*.$(SRC_SUFFIX)))
 MAIN_O_FILES    := $(patsubst %.$(SRC_SUFFIX),.build/%.o,$(wildcard src/*.$(SRC_SUFFIX)))
 EXE_O_FILES     := $(UTIL_O_FILES)
-EXECUTABLES     := $(patsubst %.o,bin/%,$(notdir $(EXE_O_FILES))) bin/grutinizer
+EXECUTABLES     := $(patsubst %.o,bin/%,$(notdir $(EXE_O_FILES))) bin/lunar
 
 HISTOGRAM_SO    := $(patsubst histos/%.$(SRC_SUFFIX),lib/lib%.so,$(wildcard histos/*.$(SRC_SUFFIX)))
 FILTER_SO    := $(patsubst filters/%.$(SRC_SUFFIX),lib/lib%.so,$(wildcard filters/*.$(SRC_SUFFIX)))
@@ -86,9 +86,10 @@ run_and_test =@printf "%b%b%b" " $(3)$(4)$(5)" $(notdir $(2)) "$(NO_COLOR)\r";  
                 rm -f $(2).log $(2).error
 endif
 
-all: include/GVersion.h $(EXECUTABLES) $(LIBRARY_OUTPUT) pcm_files bin/gadd \
-           bin/grutinizer-config bin/gadd_fast.py\
-           $(HISTOGRAM_SO) $(FILTER_SO) extras lib/libAllGrutinizer.so
+all: include/GVersion.h $(EXECUTABLES) $(LIBRARY_OUTPUT) pcm_files \
+           bin/grutinizer-config \
+           $(HISTOGRAM_SO) $(FILTER_SO) extras 
+	   #lib/libAllGrutinizer.so
 	@printf "$(OK_COLOR)Compilation successful, $(WARN_COLOR)woohoo!$(NO_COLOR)\n"
 
 pcm_files:
