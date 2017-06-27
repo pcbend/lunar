@@ -83,8 +83,21 @@ public:
 
 typedef GHXX<TH1D> GH1D;
 typedef GHXX<TH1F> GH1F;
+typedef GHXX<TH1I> GH1I;
+typedef GHXX<TH1S> GH1S;
+typedef GHXX<TH1C> GH1C;
+
 typedef GHXX<TH2D> GH2D;
+typedef GHXX<TH2F> GH2F;
+typedef GHXX<TH2I> GH2I;
+typedef GHXX<TH2S> GH2S;
+typedef GHXX<TH2C> GH2C;
+
 typedef GHXX<TH3D> GH3D;
+typedef GHXX<TH3F> GH3F;
+typedef GHXX<TH3I> GH3I;
+typedef GHXX<TH3S> GH3S;
+typedef GHXX<TH3C> GH3C;
 
 
 #endif /* GHXX_H */
