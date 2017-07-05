@@ -1,0 +1,12 @@
+#ifndef GRUT_GVERSION
+#define GRUT_GVERSION
+
+#define GRUT_RELEASE "0.0"
+#define GRUT_RELEASE_TIME "2017-06-26 12:10:27 -0400"
+#define GRUT_RELEASE_NAME "pre-takeoff"
+
+#define GRUT_GIT_COMMIT "v0.0-2-g4115ef4"
+#define GRUT_GIT_BRANCH "master"
+#define GRUT_GIT_COMMIT_TIME "2017-06-27 08:33:12 -0400"
+
+#endif /* GRUT_GVERSION */

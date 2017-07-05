@@ -1,4 +1,4 @@
-// GHXX.h
+//  GHXX.h
 
 
 #ifdef __CINT__
@@ -7,7 +7,15 @@
 #pragma link off all functions;
 #pragma link C++ nestedclasses;
 
+//#pragma link C++ class GCanvas+;
+//#pragma link C++ class GRootCanvas+;
 
+
+
+
+//#pragma link C++ class GHX<TH1>+;
+//#pragma link C++ class GHXX<TH1>+;
+//#pragma link C++ typedef GH1;
 
 
 #pragma link C++ class GHX<TH1D>+;
