@@ -24,11 +24,15 @@ class Gint : public TRint {
     virtual ~Gint();
     //unique to gint
     void Init(); 
+    void ApplyOptions();
 
     //from trint
+    //
+    void PrintLogo(bool lite=true);
     void Terminate(Int_t status=0);
-   
+  
     ///from tapplication.
+    Int_t  TabCompletionHook(char *buf, int* pLoc, std::ostream &out);
     Long_t ProcessLine(const char *line,Bool_t sync=kTRUE,Int_t *error=0);
 
     
@@ -36,7 +40,7 @@ class Gint : public TRint {
 #ifndef __CINT__
     std::thread::id main_thread_id;
 #endif
-
+    bool fIsTabComplete;
 
 
 

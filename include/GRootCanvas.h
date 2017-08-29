@@ -7,6 +7,13 @@
 //
 //
 
+/*************************************************************************
+ * Copyright (C) 1995-2000, Rene Brun and Fons Rademakers.               *
+ * All rights reserved.                                                  *
+ *                                                                       *
+ * For the licensing terms see $ROOTSYS/LICENSE.                         *
+ * For the list of contributors see $ROOTSYS/README/CREDITS.             *
+ *************************************************************************/
 
 #ifndef ROOT_GRootCanvas
 #define ROOT_GRootCanvas
@@ -113,7 +120,7 @@ private:
    Bool_t   HandleDNDLeave();
 
 public:
-   GRootCanvas(GCanvas *c = 0, const char *name = "GRUT Canvas", UInt_t width = 500, UInt_t height = 300);
+   GRootCanvas(GCanvas *c = 0, const char *name = "GRoot Canvas", UInt_t width = 500, UInt_t height = 300);
    GRootCanvas(GCanvas *c, const char *name, Int_t x, Int_t y, UInt_t width, UInt_t height);
    virtual ~GRootCanvas();
 
@@ -160,7 +167,7 @@ public:
    Bool_t   ProcessMessage(Long_t msg, Long_t parm1, Long_t parm2);
    void     ReallyDelete();
 
-   ClassDef(GRootCanvas,0)  //GRSI native GUI version of main window with menubar and drawing area
+   ClassDef(GRootCanvas,0)  //GRoot native GUI version of main window with menubar and drawing area
 };
 
 #endif

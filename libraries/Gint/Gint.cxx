@@ -3,6 +3,7 @@
 
 #include <Gint.h>
 #include <TEnv.h>
+#include <GRootGuiFactory.h>
 
 #include <Globals.h>
 
@@ -27,27 +28,60 @@ Gint::Gint(int argc, char **argv,void *options, Int_t numOptions, Bool_t noLogo,
   GInterruptHandler *ih = new GInterruptHandler();
   ih->Add();
 
-  //fRootFilesOpened = 0;
-
-  SetPrompt(CYAN "lunar [%d] " RESET_COLOR);
-  //GOptions::Get(argc, argv);
 }
 
 Gint::~Gint() {
-  //if(fKeepAliveTimer) 
-  //  delete fKeepAliveTimer;
 }
 
 void Gint::Init() {
   //std::string grutpath = getenv("LUNSYS");
   //gInterpreter->AddIncludePath(Form("%s/include",grutpath.c_str()));
+  SetPrompt("lunar [%d] ");
+  fIsTabComplete = false;
+
+  ApplyOptions();
+
+}
+
+void Gint::ApplyOptions() {
+  //get the options....
+  if(!false) {
+    GRootGuiFactory::Init();
+  }
+}
+
+
+
+
+Int_t Gint::TabCompletionHook(char *buf,int *pLoc, std::ostream &out) {
+  fIsTabComplete = true;
+  int result = TRint::TabCompletionHook(buf,pLoc,out);
+  fIsTabComplete = false;
+  return result;
 }
 
 
 Long_t Gint::ProcessLine(const char *line,Bool_t sync,Int_t *error) {
+  
+  if(fIsTabComplete) {
+    return TRint::ProcessLine(line,sync,error);
+  }
+  
   TString sline(line);
+  if(!sline.Length()) {
+    return 0;
+  }
+  sline.ReplaceAll("TCanvas","GCanvas");
+  
+  
   long result =  TRint::ProcessLine(sline.Data(),sync,error);
   return result;
+}
+
+void Gint::PrintLogo(bool lite) {
+  printf("i'm a logo!\n");
+  fflush(stdout);
+
 }
 
 void Gint::Terminate(Int_t status) {
